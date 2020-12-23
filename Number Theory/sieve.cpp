@@ -29,13 +29,9 @@ const int N = 1e7;
 int spf[N + 1];
 vector<int> prime;
 
-void linear_sieve()
-{
-	//spf:Smallest prime factor
-	for (int i = 2; i <= N; ++i)
-	{
-		if (spf[i] == 0)
-		{
+void linear_sieve(){
+	for (int i = 2; i <= N; ++i){
+		if (spf[i] == 0){
 			spf[i] = i;
 			prime.pb(i);
 		}
