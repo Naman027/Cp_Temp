@@ -3,7 +3,7 @@ Code for nCr using the fermat's theorem
 ll modInverse(ll n) { 
     return mpow(n, mod-2); 
 }
- 
+// precomputation of fact is possible.. 
 ll nCr(ll n, ll r){ 
    if (r==0) 
       return 1; 
