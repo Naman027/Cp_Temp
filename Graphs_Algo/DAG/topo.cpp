@@ -1,4 +1,4 @@
-// Khan's Algo for toposort
+// Kahn's Algo for toposort
 // There can be more than one topological sorting for a graph.
 // The first vertex in topological sorting is always a vertex with in-degree as 0 (a vertex with no in-coming edges).
 #include<bits/stdc++.h>
