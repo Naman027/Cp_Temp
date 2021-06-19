@@ -11,6 +11,7 @@ void shortest_distance(vector<int> adj[],int N,int src){
     for(int i=0;i<N;i++) dist[i] = INT_MAX;
 
     queue<int> q;
+    q.push(src);
     dist[src] = 0;
     while(!q.empty()){
         int node = q.front();
