@@ -41,7 +41,7 @@ void shortest_distance(vector<int> adj[],int N,int src){
 // set<pair<int,int>> can also be used so that similar values are not inserted in the queue basically
 
 
-void djikstra(vector<pair<int,int>> adj[],int N,int src){
+void djikstra(vector<pair<int,int>> adj[],int N,int src){ // pair is like (edge weight, connecting node)
     vector<int> dis(N,1e9);
     priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
     dis[src] = 0;
@@ -62,6 +62,46 @@ void djikstra(vector<pair<int,int>> adj[],int N,int src){
     }
 
 }
+
+// For negative edges
+// Bellman Ford Algorithm for Directed Graph 
+// if undirected converrt graph to directed 
+// -ve cycle should be avoided and bellman ford algo detects it and can't be implmented for this course
+
+// max N-1 relaxations are needed take the worst case longest path possible
+// to detect negative cycle just do one more relaxation if dist array changes then there is a negative cycle
+
+void bellman(vector<pair<int,int>> adj[],int N,int src){ // pair is like (node, edge weight)
+    int inf = 1e9;
+    vector<int> dist(N,inf);
+    dist[src] = 0;
+    for(int l=1;l<=N-1;l++){
+        for(int i=0;i<N;i++){
+            for(auto it:adj[i]){
+                if(dist[i]+it.second<dist[it.first]){
+                    dist[it.first] = dist[i]+it.second;
+                }
+            }
+        }
+    }
+
+    bool isnegCycle = 0;
+    for(int i=0;i<N;i++){
+        for(auto it:adj[i]){
+            if(dist[i]+it.second<dist[it.first]){
+                isnegCycle = 1;
+                cout << "Negative Cycle Exists";
+                return;
+            }
+        }
+    }
+
+    for(int i=0;i<N;i++) cout << dist[i] << " ";
+    // dist will be storing the shortest distances given constraints
+}
+
+
+
 
 
 

@@ -58,7 +58,7 @@ void kruskal(int N){
     auto comp = [&](Node a,Node b){
         return a.w < b.w;
     };
-
+    
     sort(edges.begin(),edges.end(),comp);
     makePar(N);
     int cost = 0;
