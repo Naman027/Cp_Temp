@@ -35,7 +35,7 @@ void linear_sieve(){
 			spf[i] = i;
 			prime.pb(i);
 		}
-		for (int j = 0; j < int(prime.si) && prime[j] <= spf[i] && i * prime[j] <= N; j++)
+		for (int j = 0; j < int(prime.size()) && prime[j] <= spf[i] && i * prime[j] <= N; j++)
 			spf[i * prime[j]] = prime[j];
 	}
 }
