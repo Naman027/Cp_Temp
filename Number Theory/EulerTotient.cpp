@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+#define ll long long
 
 vector<int> computeTotient(int n){
     vector<long long> phi(n+1);
@@ -15,4 +15,26 @@ vector<int> computeTotient(int n){
         }
     }
 }
+
+ll Euler_totient_function(ll n){
+    ll result = 1;
+    for (ll i = 2; i * i <= n; i++) {
+        ll c = 0;
+        if (n % i == 0) {
+            while (n % i == 0) {
+                c++;
+                n /= i;
+            }
+        }
+        if (c > 0) {
+            ll power = (ll)pow(i, c - 1);
+            ll sm = power* (i - 1);
+            result *= sm;
+        }
+    }
+    if (n > 1) result *= (n - 1);
+    return result;
+}
+
+
 
