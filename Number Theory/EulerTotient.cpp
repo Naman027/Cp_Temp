@@ -2,7 +2,7 @@
 using namespace std;
 #define ll long long
 
-vector<int> computeTotient(int n){
+vector<long long> computeTotient(int n){
     vector<long long> phi(n+1);
     for(int i=1;i<=n;i++) phi[i] = i;
 
@@ -14,6 +14,7 @@ vector<int> computeTotient(int n){
             }
         }
     }
+    return phi;
 }
 
 ll Euler_totient_function(ll n){
@@ -36,5 +37,9 @@ ll Euler_totient_function(ll n){
     return result;
 }
 
-
+int main(){
+    int n  = 10;
+    vector<long long> v = computeTotient(n);
+    for(long long a:v) cout << a << endl;
+}
 
