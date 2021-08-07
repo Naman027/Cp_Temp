@@ -1,52 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
 class NumArray {
 public:
-    vector<int> a;
     vector<int> bit;
+    vector<int> a;
+    int n;
     
     NumArray(vector<int>& nums) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        
-        int n = nums.size();
-        
+        n = nums.size();
         a = nums;
-        bit = vector<int> (n+1, 0);
+        bit = vector<int>(n+1,0);
         
         for(int i=0;i<n;i++){
-            update_bit(i, a[i]);
+            update_bit(i,a[i]);
         }
     }
     
-    void update(int i, int val) {
-        update_bit(i, val - a[i]);
-        a[i] = val;
-    }
-    
-    int sumRange(int i, int j) {
-        return getsum(j) - getsum(i-1);
-    }
-    
-    void update_bit(int idx, int val){
-        idx++;
-        
-        int n = a.size();
-        
-        while(idx <= n){
-            bit[idx] += val;
-            
-            idx += (idx & -idx);
+    void update_bit(int ind,int val){
+        ind++;
+        while(ind<=n){
+            bit[ind]+=val;
+            ind+=(ind&(-ind));
         }
     }
     
-    int getsum(int idx){
-        idx++;
-        
-        int res = 0;
-        while(idx > 0){
-            res += bit[idx];
-            
-            idx -= (idx & -idx);
+    void update(int index, int val) {
+        update_bit(index,val-a[index]);
+        a[index] = val;
+    }
+    
+    int query(int ind){
+        ind++;
+        int ans = 0;
+        while(ind>0){
+            ans+=bit[ind];
+            ind-=(ind&(-ind));
         }
-        return res;
+        return ans;
+    }
+    
+    int sumRange(int left, int right) {
+        return query(right)-query(left-1);
     }
 };
+
+
