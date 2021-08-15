@@ -35,6 +35,37 @@ void uni(int a,int b){
     }
 }
 
+// to find size of connected components
+
+void makePar(int n){
+    for(int i=0;i<n;++i){
+        par[i] = i;
+        ranki[i] = 1;
+    }
+}
+
+void uni(int a,int b){
+    a = findPar(a);
+    b = findPar(b);
+    // Union By Rank
+    if(ranki[a]<ranki[b]){
+        par[a] = b;
+        ranki[b]+=ranki[a];
+    }
+    else if(ranki[a]>ranki[b]){ 
+        par[b] = a;
+        ranki[a]+=ranki[b];
+    }
+    else{
+        par[b] = a;
+        ranki[a]+=ranki[b];
+    }
+}
+
+int size(int node){
+    return ranki[findPar(node)];
+}
+
   
 // lesser rank is attached to higher rank inorder to improve complexity
 // Path Compression minimizes no of moves to get the parent of a node
