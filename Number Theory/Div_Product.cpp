@@ -4,6 +4,19 @@ using namespace std;
 
 const int N = 1e5+5;
 
+ll mod = 1e9+7; 
+ll mpow(ll base, ll exp){
+    base %= mod;
+    ll result = 1;
+    while (exp > 0){
+        if (exp & 1)
+            result = ((ll)result * base) % mod;
+        base = ((ll)base * base) % mod;
+        exp >>= 1;
+    }
+    return result;
+}
+
 vector<ll> p(N);
 
 void precompute(){
@@ -23,11 +36,14 @@ void precompute(){
             }
         }
     }
+
+    for(int i = 2; i < N; i++) {
+        p[i] = (mpow(i, p[i]/2)%mod * (p[i]&1 ? (ll)sqrt(i) : 1)%mod)%mod;
+    }
 }
 
-ll count_divisors(ll n){
+ll product_divisors(ll n){
     return p[n];
 }
-
 
 

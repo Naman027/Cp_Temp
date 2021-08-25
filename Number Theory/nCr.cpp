@@ -1,8 +1,27 @@
-Code for nCr using the fermat's theorem
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+//Code for nCr using the fermat's theorem
+
+ll mod = 1e9+7;
+
+ll mpow(ll base,ll exp){
+    base%=mod;
+    ll res = 1;
+    while(exp){
+        if(exp&1) res*=base;
+        res%=mod;
+        base = (base*base)%mod;
+        exp>>=1;
+    }
+    return res;
+}
 
 ll modInverse(ll n) { 
     return mpow(n, mod-2); 
 }
+
 // precomputation of fact is possible.. 
 ll nCr(ll n, ll r){ 
    if (r==0) 
@@ -15,4 +34,4 @@ ll nCr(ll n, ll r){
             modInverse(fac[n-r]) % mod)%mod)%mod; 
 }
 
-----------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------
