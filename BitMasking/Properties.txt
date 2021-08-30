@@ -1,0 +1,26 @@
+
+
+1. a+b = a^b + 2(a&b)
+2. a+b = a|b + a&b
+=> a|b = a^b + a&b
+
+
+At first, let's prove the statement: GCD(Fn, Fm) = FGCD(n, m).
+Let's express Fn + k using Fn and Fk. We'll get the formula: Fn + k = Fk·Fn + 1 + Fk - 1·Fn, which is easy to prove by induction.
+Then use the derived formula and notice, that GCD(Fn + k, Fn) = GCD(Fk, Fn).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
