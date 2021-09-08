@@ -26,6 +26,7 @@ int findPar(int node){
 void uni(int a,int b){
     a = findPar(a);
     b = findPar(b);
+    if(a==b) return;
     // Union By Rank
     if(ranki[a]<ranki[b]) par[a] = b;
     else if(ranki[a]>ranki[b]) par[b] = a;
@@ -48,6 +49,7 @@ void uni(int a,int b){
     a = findPar(a);
     b = findPar(b);
     // Union By Rank
+    if(a==b) return;
     if(ranki[a]<ranki[b]){
         par[a] = b;
         ranki[b]+=ranki[a];
