@@ -47,6 +47,11 @@ public:
 };
 
 
+// Rightmost set bit of x  = (x&(-x))
+// i is index i BIT
+// let j = remove last bit (i)
 
+Then BIT[i] stores value for range of index (j+1) -> i
+that is j = i-(i&(-i));
 
 
