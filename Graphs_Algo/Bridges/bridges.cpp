@@ -11,24 +11,22 @@ const int N = 2e5;
 vector<int> adj[N];
 
 void bridge(int node,int parent,vector<int>& tim, vector<int>& low,vector<int>& vis,int& timer){
-    
     vis[node] = 1;
     tim[node] = low[node] = timer++;
-
     for(auto it:adj[node]){
         if(it==parent) continue;
         if(!vis[it]){
             bridge(it,node,tim,low,vis,timer);
-            low[node] = min(low[node],low[it]);
             if(low[it]>tim[node]){
                 cout << node << " " << it << endl;
-            }  
+            }
+            low[node] = min(low[node],low[it]);  
         }
         else{
-            low[node] = min(low[node],low[it]);
+            low[node] = max(low[node],tim[it]); // directly to ancestor 
+            low[node] = min(low[node],low[it]); // ancestor of ancestor
         }
     }
-
 }
 
 void solve(){ 
