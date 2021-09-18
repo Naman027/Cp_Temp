@@ -7,8 +7,12 @@ using namespace std;
 
 // Removing a particular node the graph is broken into 2 or more components
 /*
-creating 2 arrays : time of insertion[] and lowest time of insertion[]
-dfs problem
+
+1. End pts of a bridge will be an articulation point if that node has a degree atleast 2.
+2. It is not necessary for an articulation point to be an end-pt of a bridge. Hence bridge algo can't be used here.
+
+
+
 */
 
 const int N = 2e5;

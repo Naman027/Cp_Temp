@@ -54,4 +54,34 @@ public:
 Then BIT[i] stores value for range of index (j+1) -> i
 that is j = i-(i&(-i));
 
+class BIT{
+public:
+    vector<ll> bit;
+    int n;
 
+    BIT(int n){
+        bit = vector<ll>(n+1,0);
+        this->n = n+1;
+    }
+
+    void update(ll idx,ll val){
+        while(idx<=n){
+            bit[idx]+=val;
+            idx+=(idx&(-idx));
+        }
+    }
+
+    ll query(ll ind){
+        ll ans = 0;
+        while(ind>0){
+            ans+=bit[ind];
+            ind-=(ind&(-ind));
+        }
+        return ans;
+    }
+
+    ll sumRange(int l,int r){
+        return query(r) - query(l-1);
+    }
+
+};

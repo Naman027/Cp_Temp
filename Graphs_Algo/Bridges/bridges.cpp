@@ -23,7 +23,7 @@ void bridge(int node,int parent,vector<int>& tim, vector<int>& low,vector<int>& 
             low[node] = min(low[node],low[it]);  
         }
         else{
-            low[node] = max(low[node],tim[it]); // directly to ancestor 
+            low[node] = min(low[node],tim[it]); // directly to ancestor 
             low[node] = min(low[node],low[it]); // ancestor of ancestor
         }
     }
