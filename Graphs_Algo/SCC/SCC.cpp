@@ -40,7 +40,7 @@ void solve(){
         int u,v;
         adj[u].push_back(v);
     }
-
+    
     stack<int> st;
     vector<int> vis(n,0);
     for(int i=0;i<n;i++){
