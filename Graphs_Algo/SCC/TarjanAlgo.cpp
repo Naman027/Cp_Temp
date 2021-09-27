@@ -48,6 +48,7 @@ int32_t main(){
     cin >> n >> m;
     vector<vector<int>> g(n+1);
     for(int i = 0; i < m; i++){
+        
         int a,b;
         cin >> a >> b;
         g[a].push_back(b);
