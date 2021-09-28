@@ -104,6 +104,7 @@ int32_t main(){
     for(auto v:conHull){
         cout << v.x << " " << v.y << endl;
     }
+    
     // Point a(4,2,0),b(3,3,0),c(2,4,0);
     // cout << orientation(a,b,c) << endl;
     // cout << dot(b-a,b-a) << endl;
