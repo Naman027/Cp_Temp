@@ -92,4 +92,3 @@ vector<int> getPrimeFactors(int n) {
     }
     return factors;
 }
-
