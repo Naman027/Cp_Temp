@@ -83,3 +83,13 @@ void linear_sieve(){
 			spf[i * prime[j]] = prime[j];
 	}
 }
+
+vector<int> getPrimeFactors(int n) { 
+    vector<int> factors;
+    while (n > 1) {
+        factors.push_back(spf[n]);
+        n /= spf[n];
+    }
+    return factors;
+}
+
