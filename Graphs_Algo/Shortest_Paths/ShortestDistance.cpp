@@ -50,7 +50,8 @@ void djikstra(vector<pair<int,int>> adj[],int N,int src){ // pair is like (edge 
         int dist = pq.top().first;
         int node = pq.top().second;
         pq.pop();
-
+        // may help to reduce rum time in very big cases
+        if(dis[node]<dist) continue;
         for(auto ch:adj[node]){
             int nnode = ch.second;
             int distreq = ch.first;
