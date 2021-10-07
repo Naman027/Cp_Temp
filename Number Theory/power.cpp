@@ -28,3 +28,17 @@ ll mpow(ll base, ll exp){
     return result;
 }
 //-------------------------------------------------------------------------------------------------
+
+// GP sum upto n in O(logn)
+
+ll sum_nthGP(ll a,ll r,ll n){
+    ll ans = 0;
+    while(n){
+        if(n&1) ans+=a*pow(r,n);
+        a = a+a*r;
+        r = r*r;
+        n >>= 1;
+    }
+    return ans;
+}
+
