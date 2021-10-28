@@ -59,3 +59,69 @@ int main()
     update(tree, index, s, e, 1, 43);
     cout << sum(tree, index, s, e, 1, 3) << endl;
 }
+
+// For Range Update using Lazy Propogation
+const int N = 1e5;
+vector<int> segtree(4*N);
+vector<int> lazy(4*N);
+
+void rangeLazy(int ind,int left,int right,int l,int r,int val){
+
+    if(lazy[ind]!=0){
+        segtree[ind]+=(right-left+1)*lazy[ind];
+        if(left!=right){
+            lazy[2*ind+1]+=lazy[ind];
+            lazy[2*ind+2]+=lazy[ind];
+        }
+        lazy[ind] = 0;
+    }
+
+    if(r<left || l>right || left>right) return;
+
+    if(left>=l && right<=r){
+        segtree[ind]+=(right-left+1)*val;
+        if(left!=right){
+            lazy[2*ind+1]+=val;
+            lazy[2*ind+2]+=val;
+        }
+        return;
+    }
+
+    int mid = l +(r-l)/2;
+    rangeLazy(2*ind+1,left,mid,l,r,val);
+    rangeLazy(2*ind+2,mid+1,right,l,r,val);
+    segtree[ind] = segtree[2*ind+1]+segtree[2*ind+2];
+}
+
+int query(int ind,int left,int right,int l,int r){
+    if(lazy[ind]!=0){
+        segtree[ind]+=(right-left+1)*lazy[ind];
+        if(left!=right){
+            lazy[2*ind+1]+=lazy[ind];
+            lazy[2*ind+2]+=lazy[ind];
+        }
+        lazy[ind] = 0;
+    }
+
+    if(r<left || l>right || left>right) return 0;
+    if(l<=left && right<=r){
+        return segtree[ind];
+    }
+
+    int mid = l+(r-l)/2;
+    return query(2*ind+1,left,mid,l,r)+query(2*ind+2,mid+1,right,l,r);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
