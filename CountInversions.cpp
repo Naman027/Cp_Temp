@@ -9,7 +9,7 @@ int merge(vector<int>& a,vector<int>& temp,int left,int mid,int right){
     k = left;
     
     while((i<=mid-1) && j<=right){
-        if(a[i]<=2*a[j]) temp[k++] = a[i++];
+        if(a[i]<=a[j]) temp[k++] = a[i++];
         else{
             temp[k++] = a[j++];
             inversions+=(mid-i);
