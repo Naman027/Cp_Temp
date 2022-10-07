@@ -12,7 +12,4 @@ int main(){
         if(el==a[i]) cnt++;
         else cnt--;
     }
-
-    
-
 }
