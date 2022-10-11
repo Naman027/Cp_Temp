@@ -12,4 +12,4 @@ function<void(int,int,int)> build = [&](int l,int r,int ind) -> void {
 };
 
 int ans = 0;
-for_each(begina(a),end(a),[&](int x){ans+=x;});
+for_each(begin(a),end(a),[&](int x){ans+=x;});
