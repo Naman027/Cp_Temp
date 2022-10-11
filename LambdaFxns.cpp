@@ -10,3 +10,6 @@ function<void(int,int,int)> build = [&](int l,int r,int ind) -> void {
     build(mid+1,r,2*ind+2);
     return;
 };
+
+int ans = 0;
+for_each(begina(a),end(a),[&](int x){ans+=x;});
